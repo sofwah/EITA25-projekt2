@@ -80,7 +80,7 @@ public class server implements Runnable {
   private static ServerSocketFactory getServerSocketFactory(String type) {
     if (type.equals("TLSv1.2")) {
       SSLServerSocketFactory ssf = null;
-      try { // set up key manager to perform server authentication
+      try { // set up key manager to perform src.server authentication
         SSLContext ctx = SSLContext.getInstance("TLSv1.2");
         KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
         TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");

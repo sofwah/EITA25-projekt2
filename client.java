@@ -1,3 +1,5 @@
+package src;
+
 import java.net.*;
 import java.io.*;
 import javax.net.ssl.*;
@@ -10,7 +12,7 @@ import java.security.cert.*;
  * authentication.
  *
  * This program assumes that the client is not inside a firewall.
- * The application can be modified to connect to a server outside
+ * The application can be modified to connect to a src.server outside
  * the firewall by following SSLSocketClientWithTunneling.java.
  */
 
@@ -67,7 +69,7 @@ public class client {
       SSLSession session = socket.getSession();
       Certificate[] cert = session.getPeerCertificates();
       String subject = ((X509Certificate) cert[0]).getSubjectX500Principal().getName();
-      System.out.println("certificate name (subject DN field) on certificate received from server:\n" + subject + "\n");
+      System.out.println("certificate name (subject DN field) on certificate received from src.server:\n" + subject + "\n");
       System.out.println("socket after handshake:\n" + socket + "\n");
       System.out.println("secure connection established\n\n");
 
@@ -81,11 +83,11 @@ public class client {
         if (msg.equalsIgnoreCase("quit")) {
           break;
         }
-        System.out.print("sending '" + msg + "' to server...");
+        System.out.print("sending '" + msg + "' to src.server...");
         out.println(msg);
         out.flush();
         System.out.println("done");
-        System.out.println("received '" + in.readLine() + "' from server\n");
+        System.out.println("received '" + in.readLine() + "' from src.server\n");
       }
       in.close();
       out.close();
