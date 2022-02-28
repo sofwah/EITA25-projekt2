@@ -38,15 +38,14 @@ public class client {
     try {
       SSLSocketFactory factory = null;
       try {
-        //TODO: använd detta för att göra inlogg med lösenord
-
-        /* Ändra "password" till lösenord skrivet i terminalen av användare
-        System.out.print("Password: ");
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
-        char[] password = read.readLine().toCharArray();
-         */
 
-        char[] password = "password".toCharArray();
+        System.out.print("Username: "); //client
+        String username = read.readLine();
+
+        System.out.print("Password: "); //password
+        char[] password = read.readLine().toCharArray();
+
 
         KeyStore ks = KeyStore.getInstance("JKS");
         KeyStore ts = KeyStore.getInstance("JKS");
@@ -54,7 +53,7 @@ public class client {
         TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
         SSLContext ctx = SSLContext.getInstance("TLSv1.2");
         // keystore password (storepass)
-        ks.load(new FileInputStream("clientkeystore"), password);
+        ks.load(new FileInputStream(username + "keystore"), password);
         // truststore password (storepass);
         ts.load(new FileInputStream("clienttruststore"), password);
         kmf.init(ks, password); // user password (keypass)
@@ -62,7 +61,7 @@ public class client {
         ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
         factory = ctx.getSocketFactory();
       } catch (Exception e) {
-        System.out.println("Inlvalid password.");
+        System.out.println("Invalid username or password.");
         //throw new IOException(e.getMessage());
       }
       SSLSocket socket = (SSLSocket)factory.createSocket(host, port);
