@@ -21,7 +21,7 @@ package database;
 	
 	
 public class Login extends JFrame {
-	//testa ladda upp kod
+	//testa ladda upp 
 		private Connection connection;
 		
 		private final String url = "jdbc:mysql://localhost:3306/hospitalsystem";
