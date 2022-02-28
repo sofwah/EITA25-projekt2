@@ -1,4 +1,4 @@
-package src.server;
+package server;
 
 public class Government extends Person {
 

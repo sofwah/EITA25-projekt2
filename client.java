@@ -79,12 +79,15 @@ public class client {
       String msg;
 
       for (;;) {
-        /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren, ex
+
+       /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren, ex
+
         1. Inloggning
         2. Beroende på användartyp, presentera tillgängliga kommandon
         3. Skriv ut/genomför önskade ändringar
         4. Upprepa 2 och 3 tills användaren loggar ut ?
          */
+
 
         /*
         ex:
@@ -106,6 +109,7 @@ public class client {
             be om korrekt kommando
           }
          */
+
 
 
         System.out.print(">");
