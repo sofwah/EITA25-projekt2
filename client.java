@@ -77,7 +77,15 @@ public class client {
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       String msg;
+
       for (;;) {
+        /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren
+        1. Inloggning
+        2. Beroende på användartyp, presentera tillgängliga kommandon
+        3. Skriv ut/genomför önskade ändringar
+        4. Upprepa 2 och 3 tills användaren loggar ut ?
+         */
+
         System.out.print(">");
         msg = read.readLine();
         if (msg.equalsIgnoreCase("quit")) {
