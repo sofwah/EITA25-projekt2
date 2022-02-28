@@ -23,8 +23,9 @@ package database;
 public class Login extends JFrame {
 	
 		private Connection connection;
-		private final String url = "jdbc:postgresql://pgserver.mah.se/festivaltest";
-		private final String user = "af8396";
+		
+		private final String url = "jdbc:mysql://localhost:3306/hospitalsystem";
+		private final String user = "root";
 		private String pass;
 
 		private JPanel contentPane;
@@ -38,7 +39,7 @@ public class Login extends JFrame {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						String pass = "jason";
+						String pass = "grupp13";
 						Login frame = new Login();
 						frame.setVisible(true);
 					} catch (Exception e) {
