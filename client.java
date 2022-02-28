@@ -79,12 +79,38 @@ public class client {
       String msg;
 
       for (;;) {
-        /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren
+
+       /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren, ex
+
         1. Inloggning
         2. Beroende på användartyp, presentera tillgängliga kommandon
         3. Skriv ut/genomför önskade ändringar
         4. Upprepa 2 och 3 tills användaren loggar ut ?
          */
+
+
+        /*
+        ex:
+        if (användare == patient) {
+          if (kommando == läsa journal) {
+            skicka till server att användare vill läsa journal
+          } else {
+            be om korrekt kommando
+          }
+
+        } else if (användare == läkare) {
+          if (kommando == läsa journal) {
+            skicka till server att användare vill läsa journal
+          } else if (kommando == skapa journal) {
+            skicka till server att användare vill skapa journal
+          } else if,,, osv
+
+          else {
+            be om korrekt kommando
+          }
+         */
+
+
 
         System.out.print(">");
         msg = read.readLine();
