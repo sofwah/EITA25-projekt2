@@ -86,6 +86,27 @@ public class client {
         4. Upprepa 2 och 3 tills användaren loggar ut ?
          */
 
+        /*
+        ex:
+        if (användare == patient) {
+          if (kommando == läsa journal) {
+            skicka till server att användare vill läsa journal
+          } else {
+            be om korrekt kommando
+          }
+
+        } else if (användare == läkare) {
+          if (kommando == läsa journal) {
+            skicka till server att användare vill läsa journal
+          } else if (kommando == skapa journal) {
+            skicka till server att användare vill skapa journal
+          } else if,,, osv
+
+          else {
+            be om korrekt kommando
+          }
+         */
+
 
         System.out.print(">");
         msg = read.readLine();
