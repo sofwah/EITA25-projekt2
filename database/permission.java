@@ -1,4 +1,4 @@
-package src.database;
+package database;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -257,7 +257,7 @@ public class permission {
 	 */
 
 	/**
-	 * HÄR BÖRJAR VILKOREN READ WRITE,EDIT OCH DELET
+	 * HÄR BÖRJAR VILLKOREN READ WRITE,EDIT OCH DELET
 	 * 
 	 * @param id
 	 * @return

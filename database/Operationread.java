@@ -1,4 +1,4 @@
-package src.database;
+package database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,8 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
-import com.mysql.cj.xdevapi.Statement;
+//Behövs dessa?
+//import com.mysql.cj.jdbc.result.ResultSetMetaData;
+//import com.mysql.cj.xdevapi.Statement;
 
 
 
@@ -27,7 +28,7 @@ public class Operationread {
 	private static Connection conn;
 	PreparedStatement readrec = null;
 	ResultSet rs = null;
-	ConnecttoDB dbConn = new ConnecttoDB();
+	database.ConnecttoDB dbConn = new database.ConnecttoDB();
 	
 	
 	public Operationread(){
