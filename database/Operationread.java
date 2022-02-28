@@ -15,8 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
-import com.mysql.cj.xdevapi.Statement;
+//import com.mysql.cj.jdbc.result.ResultSetMetaData;
+//import com.mysql.cj.xdevapi.Statement;
 
 
 
@@ -27,7 +27,7 @@ public class Operationread {
 	private static Connection conn;
 	PreparedStatement readrec = null;
 	ResultSet rs = null;
-	database.ConnecttoDB dbConn = new database.ConnecttoDB();
+	ConnecttoDB dbConn = new ConnecttoDB();
 	
 	
 	public Operationread(){
