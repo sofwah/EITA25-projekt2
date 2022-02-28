@@ -38,6 +38,11 @@ public class server implements Runnable {
 
       String clientMsg = null;
       while ((clientMsg = in.readLine()) != null) {
+        /* TODO: det är här vi hanterar alla input från användaren
+        Kontrollera kommando och gör ändringar/skriv ut data beroende på det
+         */
+
+
         String rev = new StringBuilder(clientMsg).reverse().toString();
         System.out.println("received '" + clientMsg + "' from client");
         System.out.print("sending '" + rev + "' to client...");
