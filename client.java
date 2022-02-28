@@ -35,13 +35,15 @@ public class client {
       System.exit(-1);
     }
 
+    String username = null;
+
     try {
       SSLSocketFactory factory = null;
       try {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.print("Username: "); //client
-        String username = read.readLine();
+        username = read.readLine();
 
         System.out.print("Password: "); //password
         char[] password = read.readLine().toCharArray();
@@ -117,18 +119,33 @@ public class client {
           }
          */
 
+        if (username == "patient") {
+          System.out.println("Please type one of the following commands: read");
+        } else if (username == "nurse") {
+          System.out.println("Please type one of the following commands: read, write");
+        } else if (username == "doctor") {
+          System.out.println("Please type one of the following commands: read, write, create");
+        } else if (username == "government") {
+          System.out.println("Please type one of the following commands: delete");
+        } else if (username == "client") {
+
+          System.out.print(">");
+          msg = read.readLine();
+          if (msg.equalsIgnoreCase("quit")) {
+            break;
+          }
+          System.out.print("sending '" + msg + "' to src.server...");
+          out.println(msg);
+          out.flush();
+          System.out.println("done");
+          System.out.println("received '" + in.readLine() + "' from src.server\n");
 
 
-        System.out.print(">");
-        msg = read.readLine();
-        if (msg.equalsIgnoreCase("quit")) {
-          break;
         }
-        System.out.print("sending '" + msg + "' to src.server...");
-        out.println(msg);
-        out.flush();
-        System.out.println("done");
-        System.out.println("received '" + in.readLine() + "' from src.server\n");
+
+
+
+
       }
       in.close();
       out.close();
