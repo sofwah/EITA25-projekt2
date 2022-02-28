@@ -38,7 +38,11 @@ public class client {
     try {
       SSLSocketFactory factory = null;
       try {
+        //TODO: använd detta för att göra inlogg med lösenord
+
+        //ändra "password" till lösenord skrivet i terminalen av användare
         char[] password = "password".toCharArray();
+
         KeyStore ks = KeyStore.getInstance("JKS");
         KeyStore ts = KeyStore.getInstance("JKS");
         KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
@@ -81,13 +85,11 @@ public class client {
       for (;;) {
 
        /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren, ex
-
         1. Inloggning
         2. Beroende på användartyp, presentera tillgängliga kommandon
         3. Skriv ut/genomför önskade ändringar
         4. Upprepa 2 och 3 tills användaren loggar ut ?
          */
-
 
         /*
         ex:
