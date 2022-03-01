@@ -1,3 +1,4 @@
+package Client;
 //package src;
 
 import java.net.*;
@@ -57,7 +58,7 @@ public class client {
         // keystore password (storepass)
         ks.load(new FileInputStream(username + "keystore"), password);
         // truststore password (storepass);
-        ts.load(new FileInputStream("clienttruststore"), password);
+        ts.load(new FileInputStream(username + "truststore"), password);
         kmf.init(ks, password); // user password (keypass)
         tmf.init(ts); // keystore can be used as truststore here
         ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
@@ -144,8 +145,10 @@ public class client {
             break;
         
           default:
+          /*
             System.out.println("Identification Error. Please login again");
             System.exit(-1);
+          */
             break;
         }
         System.out.println("Quit: quit/q"); //If you want to leavce application
