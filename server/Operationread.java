@@ -15,6 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+
+import database.*; 
+
 //import com.mysql.cj.jdbc.result.ResultSetMetaData;
 //import com.mysql.cj.xdevapi.Statement;
 

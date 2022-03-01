@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import database.*;
+
 public class Record {
 	private static Connection conn;
 	PreparedStatement readrec = null;

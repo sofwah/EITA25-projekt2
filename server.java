@@ -2,9 +2,15 @@ import java.io.*;
 import java.net.*;
 import javax.net.*;
 import javax.net.ssl.*;
+
+import client.Client;
+
 import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+
+import database.*;
+
 
 public class server implements Runnable {
   private ServerSocket serverSocket = null;
@@ -42,6 +48,73 @@ public class server implements Runnable {
         Kontrollera kommando och gör ändringar/skriv ut data beroende på det
          */
 
+         /* TODO
+         
+          Koppling har skett
+          Få ut ID från CN -> Handler handler  = new Handler(String CN)
+          handler.getPermissions(); //Vad personen får göra.
+          handler.getJournal(); //Returnera journal
+          handler.getJournal(Stirng name/ int id); //Returnera journal
+
+
+
+          //Läsa journal, skriva journal, radera journal, 
+
+
+          Får in unsername
+          Kolla med ACl, Hämtar id och type. Returnerar en 
+          
+         */
+
+
+          Console console = System.console();
+          String username;
+          username = subject;
+		      try {
+				    AclHandler acl = new AclHandler(username);
+            String type = acl.getType(username);
+            
+            if(type.equals("Doctor")) {
+              Doctor doc = (Doctor ) acl.getUser();
+              System.out.println("Would you like to create, edit, or read a medical record?");
+              String str = console.readLine();
+              if (str.toLowerCase().equals("create")) {
+                doc.createJournal(patientens namn);
+              } else if (str.toLowerCase().equals("edit")) {
+                doc.writeToPatient(username);  //lista alternativen läkaren har att skriva till? (writeToPatient-metod)
+              } else if (str.toLowerCase().equals("read")) {
+                doc.readJournal(username);
+              } else if (str.toLowerCase().equals("delete")) {
+                System.out.println("You do not have the permission to do that.");
+              } else {
+                System.out.println(" ");
+              }
+              
+            } else if (type.equals("Nurse")) {
+              Nurse nur = (Nurse ) acl.getUser();
+            } else if (type.equals("Patient")) {
+
+              Patient pat = (Patient ) acl.getUser();
+
+              System.out.println("Would you like to read your medical record?");
+              String str = console.readLine();
+              if (str.toLowerCase().equals("yes") || str.toLowerCase().equals("y")) {
+                pat.readJournal(username);
+              } else {
+                System.out.println(" ");
+              }
+            } else if (type.equals("Government")) {
+              Government gov = (Government ) acl.getUser();
+
+              System.out.println("Would you like to read or delete a file?");
+            }
+			    } catch (Exception e) {
+			    	// TODO Auto-generated catch block
+				    e.printStackTrace();
+		    	}
+
+          
+
 
         String rev = new StringBuilder(clientMsg).reverse().toString();
         System.out.println("received '" + clientMsg + "' from client");
@@ -60,7 +133,7 @@ public class server implements Runnable {
       System.out.println("Client died: " + e.getMessage());
       e.printStackTrace();
       return;
-    }
+    } 
   }
   
   private void newListener() { (new Thread(this)).start(); } // calls run()
