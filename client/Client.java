@@ -1,3 +1,4 @@
+package client;
 //package src;
 
 import java.net.*;
@@ -6,6 +7,7 @@ import javax.net.ssl.*;
 import java.security.cert.X509Certificate;
 import java.security.KeyStore;
 import java.security.cert.*;
+import java.util.Locale;
 
 /*
  * This example shows how to set up a key manager to perform client
@@ -16,7 +18,7 @@ import java.security.cert.*;
  * the firewall by following SSLSocketClientWithTunneling.java.
  */
 
-public class client {
+public class Client {
   public static void main(String[] args) throws Exception {
     String host = null;
     int port = -1;
@@ -42,10 +44,10 @@ public class client {
       try {
         BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.print("Username: "); //client
+        System.out.print("Username: "); //Who is trying to access the system?
         username = read.readLine();
 
-        System.out.print("Password: "); //password
+        System.out.print("Password: "); //The password to the keystore, 2FA
         char[] password = read.readLine().toCharArray();
 
 
@@ -55,9 +57,9 @@ public class client {
         TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
         SSLContext ctx = SSLContext.getInstance("TLSv1.2");
         // keystore password (storepass)
-        ks.load(new FileInputStream(username + "keystore"), password);
+        ks.load(new FileInputStream("client/" + username + "keystore"), password);
         // truststore password (storepass);
-        ts.load(new FileInputStream("clienttruststore"), password);
+        ts.load(new FileInputStream("client/" + username + "truststore"), password);
         kmf.init(ks, password); // user password (keypass)
         tmf.init(ts); // keystore can be used as truststore here
         ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
@@ -119,32 +121,79 @@ public class client {
           }
          */
 
-        if (username == "patient") {
-          System.out.println("Please type one of the following commands: read");
-        } else if (username == "nurse") {
-          System.out.println("Please type one of the following commands: read, write");
-        } else if (username == "doctor") {
-          System.out.println("Please type one of the following commands: read, write, create");
-        } else if (username == "government") {
-          System.out.println("Please type one of the following commands: delete");
-        } else if (username == "client") {
-
-          System.out.print(">");
-          msg = read.readLine();
-          if (msg.equalsIgnoreCase("quit")) {
+        String userID = "";
+        //control what kind of user this is, present choices as follows
+        switch (username.toLowerCase(Locale.ROOT).substring(0,3)) {
+          case "pat":
+            System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead Medical Record:read");
+            //Send Message
+            //revveive message
+            userID = "pat"; 
             break;
-          }
-          System.out.print("sending '" + msg + "' to src.server...");
-          out.println(msg);
-          out.flush();
-          System.out.println("done");
-          System.out.println("received '" + in.readLine() + "' from src.server\n");
+          case "nur":
+            System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead: read\nWrite: write");
+            userID = "nur";
+            break;
+
+          case "doc":
+            System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead\nWrite\nCreate");
+            userID = "doc";
+            break;
+
+          case "gov":
+            System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead\nDelete");
+            userID = "gov";
+            break;
+        
+          default:
+          /*
+            System.out.println("Identification Error. Please login again");
+            System.exit(-1);
+          */
+            break;
+        }
+        System.out.println("Quit: quit/q"); //If you want to leave application
 
 
+
+
+        System.out.print(">");
+        msg = read.readLine();
+        
+        boolean connection = true;
+        if (msg.equalsIgnoreCase("quit") || msg.equalsIgnoreCase("q") ) {
+          connection = false;
+          break;
         }
 
+        do {
 
+          System.out.print("sending '" + msg + "' to src.server...");
+          send(msg,out);
+          System.out.println("done");
 
+          //Receive
+
+          System.out.println("Receiving response...");
+          String received = receive(in);
+          System.out.println("received '" + received + "' from src.server\n");
+
+          //Send another message or quit
+          msg = read.readLine();
+          if (msg.equalsIgnoreCase("quit") || msg.equalsIgnoreCase("q") ) {
+            connection = false;
+            break;
+          }
+        } while (connection); //Keep sending and receiving messages to/from server while client not quit.
+
+        /*
+        System.out.print("sending '" + msg + "' to src.server...");
+        out.println(msg);
+        out.flush();
+        
+        System.out.println("done");
+        System.out.println("received '" + in.readLine() + "' from src.server\n");
+        */
 
       }
       in.close();
@@ -154,5 +203,16 @@ public class client {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  } //main ends
+
+  public static void send(String msg, PrintWriter out) {
+    System.out.print("sending '" + msg + "' to src.server...");
+    out.println(msg);
+    out.flush();
+  }
+
+  public static String receive(BufferedReader in) throws IOException {
+    String received = in.readLine();
+    return received;
   }
 }
