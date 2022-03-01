@@ -1,4 +1,4 @@
-package Client;
+package client;
 //package src;
 
 import java.net.*;
@@ -7,6 +7,7 @@ import javax.net.ssl.*;
 import java.security.cert.X509Certificate;
 import java.security.KeyStore;
 import java.security.cert.*;
+import java.util.Locale;
 
 /*
  * This example shows how to set up a key manager to perform client
@@ -17,7 +18,7 @@ import java.security.cert.*;
  * the firewall by following SSLSocketClientWithTunneling.java.
  */
 
-public class client {
+public class Client {
   public static void main(String[] args) throws Exception {
     String host = null;
     int port = -1;
@@ -56,9 +57,9 @@ public class client {
         TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
         SSLContext ctx = SSLContext.getInstance("TLSv1.2");
         // keystore password (storepass)
-        ks.load(new FileInputStream(username + "keystore"), password);
+        ks.load(new FileInputStream("client/" + username + "keystore"), password);
         // truststore password (storepass);
-        ts.load(new FileInputStream(username + "truststore"), password);
+        ts.load(new FileInputStream("client/" + username + "truststore"), password);
         kmf.init(ks, password); // user password (keypass)
         tmf.init(ts); // keystore can be used as truststore here
         ctx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
@@ -122,7 +123,7 @@ public class client {
 
         String userID = "";
         //control what kind of user this is, present choices as follows
-        switch (username.substring(0,3)) {
+        switch (username.toLowerCase(Locale.ROOT).substring(0,3)) {
           case "pat":
             System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead Medical Record:read");
             //Send Message
@@ -151,7 +152,7 @@ public class client {
           */
             break;
         }
-        System.out.println("Quit: quit/q"); //If you want to leavce application
+        System.out.println("Quit: quit/q"); //If you want to leave application
 
 
 
@@ -183,7 +184,7 @@ public class client {
             connection = false;
             break;
           }
-        } while (connection); //Keep sendaing and receiving messages to/from server while client not quit.
+        } while (connection); //Keep sending and receiving messages to/from server while client not quit.
 
         /*
         System.out.print("sending '" + msg + "' to src.server...");
