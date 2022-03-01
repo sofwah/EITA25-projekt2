@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Nurse {
+public class govermentagency {
 
 	private static Connection conn;
 	PreparedStatement readrec = null;
@@ -13,51 +13,21 @@ public class Nurse {
 	ConnecttoDB dbConn = new ConnecttoDB();
 	
 	
-	public Nurse() {
+	public govermentagency(){
+
 		conn = dbConn.ConnecttoDB();
+
+	
 	}
 	
-	
-	
-	
-	
-	public boolean getnurID(int id) {
+	public String getgovname(int id) {
 
-		String getID = "select nurseID from nurse where nurseID = ?";
+		String getID = "select name from govermentpeople where  id_gov = ?";
 		try {
 			readrec = conn.prepareStatement(getID);
 			readrec.setInt(1, id);
 			rs = readrec.executeQuery();
 			while (rs.next()) {
-
-				// System.out.println(rs.getInt(1));
-				// TODO Auto-generated catch block
-				return true;
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("error");
-
-		}
-
-		System.out.println(" nurse not there");
-		return false;
-
-	}
-	
-	public String getnurname(int id) {
-
-		String getID = "select name from nurse where nurseID = ?";
-		try {
-			readrec = conn.prepareStatement(getID);
-			readrec.setInt(1, id);
-			rs = readrec.executeQuery();
-			while (rs.next()) {
-
-				// System.out.println(rs.getInt(1));
-				// TODO Auto-generated catch block
 				return rs.getString(1);
 
 			}
@@ -68,9 +38,38 @@ public class Nurse {
 
 		}
 
-		System.out.println(" nurse not there");
+		// System.out.println(" han finns inte");
 		return " ";
 
 	}
 	
+	public int getgovID(int id) {
+
+		String getID = "select id_gov from govermentpeople where  id_gov = ?";
+		try {
+			readrec = conn.prepareStatement(getID);
+			readrec.setInt(1, id);
+			rs = readrec.executeQuery();
+			while (rs.next()) {
+
+				// System.out.println(rs.getInt(1));
+				// System.out.println(" test 1");
+				return rs.getInt(1);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("error");
+
+		}
+
+		// System.out.println(" han finns inte");
+		return 0;
+
+	}
+	public static void main(String args[]) {
+		govermentagency g = new govermentagency();
+		
+	}
 }

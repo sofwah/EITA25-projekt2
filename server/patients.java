@@ -5,25 +5,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Nurse {
-
+public class patients {
+	
 	private static Connection conn;
 	PreparedStatement readrec = null;
 	ResultSet rs = null;
 	ConnecttoDB dbConn = new ConnecttoDB();
 	
 	
-	public Nurse() {
+	public patients(){
+
 		conn = dbConn.ConnecttoDB();
+
+	
 	}
 	
-	
-	
-	
-	
-	public boolean getnurID(int id) {
+	public boolean getpatID(int id) {
 
-		String getID = "select nurseID from nurse where nurseID = ?";
+		String getID = "select patID from patient where patID = ?";
 		try {
 			readrec = conn.prepareStatement(getID);
 			readrec.setInt(1, id);
@@ -31,7 +30,7 @@ public class Nurse {
 			while (rs.next()) {
 
 				// System.out.println(rs.getInt(1));
-				// TODO Auto-generated catch block
+				// System.out.println(" test 1");
 				return true;
 
 			}
@@ -42,14 +41,13 @@ public class Nurse {
 
 		}
 
-		System.out.println(" nurse not there");
+		System.out.println(" sorry no patient");
 		return false;
 
 	}
-	
-	public String getnurname(int id) {
+	public String getpatname(int id) {
 
-		String getID = "select name from nurse where nurseID = ?";
+		String getID = "select name from patient where patID = ?";
 		try {
 			readrec = conn.prepareStatement(getID);
 			readrec.setInt(1, id);
@@ -68,9 +66,13 @@ public class Nurse {
 
 		}
 
-		System.out.println(" nurse not there");
+		System.out.println("not there");
 		return " ";
 
 	}
 	
+	
+	
+	
+
 }

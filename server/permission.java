@@ -1,4 +1,4 @@
-package database;
+package server;
 
 
 import java.io.FileWriter;
@@ -15,6 +15,7 @@ public class permission {
 	PreparedStatement readrec = null;
 	ResultSet rs = null;
 	Operationread or = null;
+	
 	Doctor d =new Doctor();
 	Nurse n = new Nurse();
 	patients p = new patients();
@@ -65,7 +66,7 @@ public class permission {
 	 */
 
 	// hämta journalen för en given id/div
-	public int getJournal(int id, int idtwo,String username) {
+	public int getJournal(int id, int idtwo) {
 
 		if (getID(id) == 0) { // check if input id exist in the system
 			loggingunknown( "UKNOWN", "READ");
@@ -93,8 +94,17 @@ public class permission {
 							+ rs.getString(6));
 					
 				}
-
-			//	logging(id, username, "READ");
+					if(p.getpatID(id)==true) {
+						
+						String uname =p.getpatname(id);
+						int rec =r.getrecpatid(id);
+						logging(rec, uname, "READ");
+					}else {
+						String uname =g.getgovname(id);
+						//getgovtid när det fixas ska gå in där
+						logging(id, uname, "READ"); 
+					}
+			
 			} catch (Exception e) {
 				System.out.println("error");
 			}
@@ -120,15 +130,13 @@ public class permission {
 							+ rs.getString(6));
 					
 				}
-
-				logging(id, username, "READ");
+				String uname= d.getdocname(id);
+				int recid = r.getrecdocid(id);
+				logging(recid, uname, "READ");
 			} catch (Exception e) {
 				System.out.println("error");
 			}
-			// return rs.getInt(1);
-
-			// }else {
-			// System.out.println(" doctors not there");
+			
 		}else  { // if not gov or patien, or doctor then probebly nurs and print their stuffout
 			String getJournal = "select r.recid,p.name,d.name,n.name,di.name,r.notes from record r inner join nurse n on(n.nurseid=r.nurseid) inner join patient p on(p.patid=r.patid) inner join division di on(di.divid=r.divid) inner join doctors d on(d.docid=r.docid) where r.nurseid=? or r.divid = (select divid from nurse  where nurseid=?)";
 
@@ -149,8 +157,8 @@ public class permission {
 							+ rs.getString(6));
 					
 				}
-
-				logging(id, username, "READ");
+				String uname = n.getnurname(id);
+				logging(id, uname, "READ");
 			} catch (Exception e) {
 				System.out.println("error");
 			}
@@ -176,12 +184,13 @@ public class permission {
 			try (PreparedStatement statement = conn
 					.prepareStatement("UPDATE record SET notes = ? WHERE  recID=? and  docID=?")){
 
-				statement.setString(1, "testnytvå"); // se till att det är en inputdialog som ska mata in vad man vil
+				statement.setString(1, "nytvå"); // se till att det är en inputdialog som ska mata in vad man vil
 														// ländra
 				statement.setInt(2, id); // se till att det input från den nurvandr aktiva användaren
 				statement.setInt(3, docornursID);
 				statement.executeUpdate();
-				// logging(recid,username,"Edit");
+				String username= d.getdocname(docornursID);
+				logging(id,username,"EDIT");
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -194,13 +203,14 @@ public class permission {
 				try (PreparedStatement statement = conn
 					.prepareStatement("UPDATE record SET notes = ? WHERE  recID=? and nurseID=? ")) {
 
-				statement.setString(1, "testnytre"); // se till att det är en inputdialog som ska mata in vad man vil
+				statement.setString(1, "tb"); // se till att det är en inputdialog som ska mata in vad man vil
 														// ländra
 				statement.setInt(2, id); // se till att det input från den nurvandr aktiva användaren
 				statement.setInt(3, docornursID);
 				
 				statement.executeUpdate();
-				// logging(recid,username,"Edit");
+				String username = n.getnurname(docornursID);
+				logging(id,username,"EDIT");
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -218,13 +228,12 @@ System.out.println(" denied access");
 
 	/**
 	 * CREATE(borde se ifall läkaren har en patient med nummer )
-	 * 
 	 * @param args
 	 */
 
 	public void CreatARecord(int patID, int docID, int nurseID, int divID, int govID, String notes) {
 	
-		if(d.getdocID(docID) == true && n.getnurID(nurseID)==true && p.getpatID(patID)== true) {
+	if(d.getdocID(docID) == true && n.getnurID(nurseID)==true && p.getpatID(patID)== true) {
 		
 		try (PreparedStatement statement = conn.prepareStatement("INSERT INTO record (patID, docID, nurseID, divID, govID, notes) values(?,?,?,?,?,?)")) {
 
@@ -236,7 +245,7 @@ System.out.println(" denied access");
 			statement.setString(6, notes);
 			
 			statement.executeUpdate();
-			
+		
 				String username = d.getNameRec(docID);
 				int i = r.getlatestrecID() ;
 				logging(i,username,"CREATED");
@@ -244,31 +253,31 @@ System.out.println(" denied access");
 		}catch (SQLException e) {
 				e.printStackTrace();
 				System.out.println("error2");
-
 			}
-
-		
 			System.out.println("Create a record");
-		
 		}else {
 			loggingunknown( "UKNOWN", "CREATE");
 			System.out.println("U CANT KEEP STEPPING");
 		}
+		}
+
+
 	
-}
-
-
 	/**
 	 * DELETE
-	 * 
-	 * @param args
+	 * @param govID
+	 * @param recID
 	 */
 
 	public void govRemove(int govID, int recID) {
 
 		if (g.getgovID(govID) != (govID)) {
+			loggingunknown( "Unknown", "DELETE");
 			System.out.println("MIND U BUIZZNES");
-		} else {
+		} else if(r.getrecID(recID)== 1) {
+			System.out.println("Record doesn't exist");
+		}
+		else {
 			try (PreparedStatement statement2 = conn
 					.prepareStatement("DELETE FROM record WHERE govID =? and recID=?")) {
 
@@ -276,7 +285,10 @@ System.out.println(" denied access");
 				statement2.setInt(2, recID);
 
 				statement2.executeUpdate();
-				System.out.println(govID + "has deleted the record" + recID);
+				String username = g.getgovname(govID);
+				
+				logging(recID, username, "DELET");
+			//	System.out.println(govID + "has deleted the record" + recID);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 
@@ -288,18 +300,13 @@ System.out.println(" denied access");
 
 	/**
 	 * AUDIT LOGA
-	 * 
-	 * @param args
 	 */
-	public static void logging(int id, String username, String parameter) {
-
+	public void logging(int recid, String username, String parameter) {
+			
 		try {
-
 			FileWriter bw = new FileWriter("audit/log.txt", true);
-
-			bw.write("personid:"+id + ", personsname " + username + ", state u buzznes:" + parameter + ", time of the event: "+LocalDateTime.now() + "\n");
+			bw.write( "Personsname: " + username + " try to " + parameter +" record: " + recid + ", time of the event: "+LocalDateTime.now() + "\n");
 			bw.close();
-			// System.out.println("Wrote to auditLog");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -311,7 +318,7 @@ System.out.println(" denied access");
 
 			FileWriter bw = new FileWriter("audit/log.txt", true);
 
-			bw.write( " This person is:" + username + ", state u buzznes:" + parameter + ", time of the event: "+LocalDateTime.now() + "\n");
+			bw.write("This person is: " + username + ", state u buzznes: " + parameter + ", time of the event: "+LocalDateTime.now() + "\n");
 			bw.close();
 			// System.out.println("Wrote to auditLog");
 		} catch (Exception e) {
@@ -323,13 +330,13 @@ System.out.println(" denied access");
 
 		permission per = new permission();
 		// per.aretheyallowedtoread();
-		//per.getJournal(32,2,"beta"); //doctortesting
-		 per.getJournal(6,6,"damir");
+		per.getJournal(6,1); //doctortesting
+		// per.getJournal(6,6,"damir");
 		// per.getJournal(9,"max"); //patient testing
 		//per.getdocdiv(1);
-		//per.editjournal(1,5);
-		// per.govRemove(3, 17);
-		per.CreatARecord(9,2,8,2,3,"baratestanya"); //korrekt
+		//per.editjournal(3,1);
+		// per.govRemove(3, 23);
+		//per.CreatARecord(9,2,8,2,3,"baratestanya"); //korrekt
 		// per.CreatARecord(9,2,8,2,3," scolioses"); //där antigen läkare/nurse/patient finns inte
 		//per.getlatestrecID();
 		//per.getrecID(11);
