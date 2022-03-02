@@ -79,9 +79,12 @@ public class server implements Runnable {
               System.out.println("Would you like to create, edit, or read a medical record?");
               String str = console.readLine();
               if (str.toLowerCase().equals("create")) {
-                doc.createJournal(patientens namn);
+                String patientName = console.readLine("Enter name of patient");
+                doc.createJournal(patientName);
               } else if (str.toLowerCase().equals("edit")) {
-                doc.writeToPatient(username);  //lista alternativen läkaren har att skriva till? (writeToPatient-metod)
+                String patientName = console.readLine("Enter name of patient");
+                String msg = console.readLine("Enter message for journal");
+                doc.writeToPatient(patientName);  //lista alternativen läkaren har att skriva till? (writeToPatient-metod)
               } else if (str.toLowerCase().equals("read")) {
                 doc.readJournal(username);
               } else if (str.toLowerCase().equals("delete")) {

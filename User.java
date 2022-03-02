@@ -24,6 +24,10 @@ public abstract class User {
         this.id = id;
     }
 
+    public String userQueries() {
+        return "Undefined user, can't find your permissions in system";
+    }
+
     protected boolean permToWriteToJournal(String patient) {
         return false;
     }

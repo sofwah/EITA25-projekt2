@@ -5,6 +5,19 @@ public class Government extends User {
         super(username, id);
     }
 
+    @Override
+    public String userQueries() {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("Welcome! Your choices of action in this journal system are as folows:\n");
+        sb.append("> Read journal: read <patient name>\n");
+        sb.append("> Delete journal: delete <patient name>\n");
+
+
+        return sb.toString();
+    }
+
 
     @Override
     protected boolean permToReadJournal(String patient) {

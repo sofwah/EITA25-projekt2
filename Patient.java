@@ -13,6 +13,17 @@ public class Patient extends User {
 
     }
 
+    @Override
+    public String userQueries() {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("Welcome! Your choices of action in this journal system are as folows:\n");
+        sb.append("> Read journal: read <patient name>\n");
+
+        return sb.toString();
+    }
+
     /*
     @Override
     protected String readJournal(String patient) {

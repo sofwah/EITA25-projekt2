@@ -10,6 +10,18 @@ public class Nurse extends User {
         this.div = div;
     }
 
+    @Override
+    public String userQueries() {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("Welcome! Your choices of action in this journal system are as folows:\n");
+        sb.append("> Read journal: read <patient name>\n");
+        sb.append("> Write to journal: write <patient name>\n");
+
+        return sb.toString();
+    }
+
     @Override 
     protected boolean permToWriteToJournal(String patient){
         try {
