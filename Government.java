@@ -29,6 +29,7 @@ public class Government extends User {
         return false;
     }
 
+    @Override
     public String deleteJournal(String patient) {
 
         try {

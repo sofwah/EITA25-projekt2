@@ -100,6 +100,20 @@ public class Client {
       System.out.print("Receive response");
       String received = receive(in);
       System.out.println("reveived "+received+" from src.server");
+      //Scanner scan = new Scanner(System.in);
+
+      while(true) {
+
+        String cmd = read.readLine();
+        send(cmd, out);
+        System.out.println("Done");
+
+        System.out.print("Receive response\n");
+       
+        System.out.println("reveived:\n "+receive(in)+"\n from src.server");
+
+        break;
+      }
 
       for (;;) {
 
@@ -130,7 +144,7 @@ public class Client {
             be om korrekt kommando
           }
          */
-        Scanner scan = new Scanner(System.in);
+
 
 
         //control what kind of user this is, present choices as follows
@@ -169,6 +183,9 @@ public class Client {
 
         System.out.print(">");
         msg = read.readLine();
+
+
+
         
         boolean connection = true;
         if (msg.equalsIgnoreCase("quit") || msg.equalsIgnoreCase("q") ) {
@@ -222,7 +239,12 @@ public class Client {
   }
 
   public static String receive(BufferedReader in) throws IOException {
-    String received = in.readLine();
-    return received;
+    
+    StringBuilder sb = new StringBuilder();
+    do{
+      sb.append(in.readLine());
+    } while(in.ready());
+
+    return sb.toString();
   }
 }

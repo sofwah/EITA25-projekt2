@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.*;
-
+import java.io.FileWriter;
 import java.text.SimpleDateFormat;  
 import java.util.Date;
 
@@ -10,7 +10,7 @@ public abstract class User {
     protected String username;
     protected String type;
     protected int id;
-    protected String journalPath = "db/Journals";
+    protected String journalPath = "db/Journals/";
     private File logFile = new File("db/log.txt");
 
     protected SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
@@ -75,7 +75,7 @@ public abstract class User {
 
         try {
             File patFile = new File(journalPath+patient+".csv");
-            PrintWriter printWriter = new PrintWriter(patFile);
+            FileWriter printWriter = new FileWriter(patFile, true);
             StringBuilder sb = new StringBuilder();
 
             int patientId = getId(patient);
@@ -87,7 +87,7 @@ public abstract class User {
 
             sb.append(msg);
             String res = sb.toString();
-            printWriter.println(res);
+            printWriter.write(res);
             printWriter.flush();  
             printWriter.close();
             log("Wrote to Journal", patient);
@@ -116,12 +116,12 @@ public abstract class User {
     protected void log(String operation, String patient){
         try {
             StringBuilder sb = new StringBuilder();
-            PrintWriter w = new PrintWriter(logFile);
+            FileWriter w = new FileWriter(logFile,true);
 
             sb.append("Log: "+formattedTime+", By: "+username+", With id: " + id +", Operation: " + operation + ", Patient: "+patient);
             sb.append("\n================================================\n");
             
-            w.println(sb.toString());
+            w.write(sb.toString());
             w.flush();
             w.close();
 
@@ -130,5 +130,13 @@ public abstract class User {
         }
 
     }
+
+    public String createJournal(String patient) {
+        return "Operation not allowed.";
+    }
+
+    public String deleteJournal(String patient) {
+        return "Operation not allowed.";
+    } 
     
 }

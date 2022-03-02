@@ -1,4 +1,8 @@
 username,id,div, type
-Doctor1,1,1, Doctor
-Doctor2,2,2, Doctor
-Patient1,3,0, Patient
+Doctor1,1,1,Doctor
+Doctor2,2,2,Doctor
+Patient1,3,0,Patient
+Patient2,7,0,Patient
+Nurse1,4,1,Nurse
+Nurse2,5,2,Nurse
+Government,6,0,Government

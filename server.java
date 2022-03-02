@@ -49,14 +49,13 @@ public class server implements Runnable {
           String username = in.readLine().trim(); //hämtar username från client
           System.out.println(username);
           AclHandler acl = new AclHandler(username);
-          String type = acl.getType(username);
   
           user = acl.getUser();
-          System.out.println("VA");
+
           //Skicka valen till client
   
-//          out.println(user.userQueries());
-          out.println(acl.getType(username));
+          out.println(user.userQueries());
+
           out.flush();
           break;
         } catch(Exception e) {
@@ -67,7 +66,52 @@ public class server implements Runnable {
       }
 
 
+      while(true) {
 
+        String msg = in.readLine();
+        String[] arr = msg.split(" ");
+        if(arr[0].equals("read")) {
+          String patient = arr[1];
+          String journal = user.readJournal(patient);
+          out.println(journal);
+          out.flush();
+        } else if(arr[0].equals("write")) {
+
+          try {
+            String patient = arr[1];
+            String personal = arr[2];
+            String note = arr[3];
+            
+            AclHandler personAcl = new AclHandler(personal);
+            User pers = personAcl.getUser();
+  
+            String res = user.writeToJournal(patient, note, pers);
+            out.println(res);
+            out.flush();
+            
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
+
+        } else if (arr[0].equals("create")) {
+          String patient = arr[1];
+
+          String res = user.createJournal(patient);
+          out.println(res);
+          out.flush();
+        } else if (arr[0].equals("delete")) {
+
+          String patient = arr[1];
+
+          String res = user.deleteJournal(patient);
+          out.println(res);
+          out.flush();
+
+        }
+
+        break;
+
+      }
 
 
 

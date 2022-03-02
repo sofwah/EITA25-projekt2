@@ -1,1 +1,4 @@
-Vem var vad när
+Log: 02/03/2022 16:59:37, By: Government, With id: 6, Operation: Deleted file, Patient: Patient2
+================================================
+Log: 02/03/2022 17:02:28, By: Government, With id: 6, Operation: Deleted file, Patient: Patient1
+================================================

@@ -16,12 +16,13 @@ public class Doctor extends User {
         
         StringBuilder sb = new StringBuilder();
         
+        String s = "Welcome! Your choices of action in this journal system are as folows:\n Read journal: read patient name\n Write to journal: write patient name\n Create journal: create patient name\n";
         sb.append("Welcome! Your choices of action in this journal system are as folows:\n");
         sb.append("> Read journal: read <patient name>\n");
         sb.append("> Write to journal: write <patient name>\n");
         sb.append("> Create journal: create <patient name>\n");
 
-        return sb.toString();
+        return s;
     }
 
 
@@ -77,8 +78,8 @@ public class Doctor extends User {
             scan.close();
 
             for(String s : permList) {
-                String[] perms = s.trim().split(",", 4); 
-                if(perms[1].equals(""+id) || perms[3].equals(""+div)) return true;
+                String[] perms = s.trim().split(","); 
+                if(perms[1].equals(Integer.toString(id)) || perms[3].equals(""+div)) return true;
             }
 
         } catch (Exception e) {
@@ -89,7 +90,7 @@ public class Doctor extends User {
 
     }
 
-
+    @Override
     public String createJournal(String patient) {
 
         try {

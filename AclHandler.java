@@ -46,6 +46,7 @@ public class AclHandler {
         } else if(type.equals("Government")) {
             return new Government(username, id);
         }
+        System.out.println("Detta gick fel");
         return null;
     }
 
