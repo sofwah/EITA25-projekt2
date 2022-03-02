@@ -41,7 +41,6 @@ public class AclHandler {
             return new Patient(username,id);
         } else if(type.equals("Doctor")) {
             return new Doctor(username,id,div);
-
         } else if(type.equals("Nurse")) {
             return new Nurse(username, id, div);
         } else if(type.equals("Government")) {
@@ -57,7 +56,7 @@ public class AclHandler {
         Scanner scanFile = new Scanner(aclFile);
 
         while(scanFile.hasNext()) {
-            String[] temp = scanFile.nextLine().split(",",3);
+            String[] temp = scanFile.nextLine().split(",",4);
             if (temp[0].equals(username)) {
                 scanFile.close();
                 return temp;

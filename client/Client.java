@@ -8,6 +8,7 @@ import java.security.cert.X509Certificate;
 import java.security.KeyStore;
 import java.security.cert.*;
 import java.util.Locale;
+import java.util.*;
 
 /*
  * This example shows how to set up a key manager to perform client
@@ -91,6 +92,15 @@ public class Client {
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       String msg;
 
+
+      System.out.print("Sending username" + username + "to src.server");
+      send(username, out);
+      System.out.println("Done");
+
+      System.out.print("Receive response");
+      String received = receive(in);
+      System.out.println("reveived "+received+" from src.server");
+
       for (;;) {
 
        /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren, ex
@@ -120,10 +130,11 @@ public class Client {
             be om korrekt kommando
           }
          */
+        Scanner scan = new Scanner(System.in);
 
-        String userID = "";
+
         //control what kind of user this is, present choices as follows
-        switch (username.toLowerCase(Locale.ROOT).substring(0,3)) {
+       /* switch (username.toLowerCase(Locale.ROOT).substring(0,3)) {
           case "pat":
             System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead Medical Record:read");
             //Send Message
@@ -138,6 +149,8 @@ public class Client {
           case "doc":
             System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead\nWrite\nCreate");
             userID = "doc";
+            send("doc", out);
+            receive(in);
             break;
 
           case "gov":
@@ -146,12 +159,9 @@ public class Client {
             break;
         
           default:
-          /*
-            System.out.println("Identification Error. Please login again");
-            System.exit(-1);
-          */
+          
             break;
-        }
+        } */
         System.out.println("Quit: quit/q"); //If you want to leave application
 
 
@@ -175,8 +185,8 @@ public class Client {
           //Receive
 
           System.out.println("Receiving response...");
-          String received = receive(in);
-          System.out.println("received '" + received + "' from src.server\n");
+          String receive = receive(in);
+          System.out.println("received '" + receive + "' from src.server\n");
 
           //Send another message or quit
           msg = read.readLine();

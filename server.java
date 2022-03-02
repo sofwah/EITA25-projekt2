@@ -42,51 +42,71 @@ public class server implements Runnable {
       out = new PrintWriter(socket.getOutputStream(), true);
       in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
+      //Här börjar riktig kod
+      User user;
+      while (true ) {
+        try {
+          String username = in.readLine().trim(); //hämtar username från client
+          System.out.println(username);
+          AclHandler acl = new AclHandler(username);
+          String type = acl.getType(username);
+  
+          user = acl.getUser();
+          System.out.println("VA");
+          //Skicka valen till client
+  
+//          out.println(user.userQueries());
+          out.println(acl.getType(username));
+          out.flush();
+          break;
+        } catch(Exception e) {
+          e.printStackTrace();
+
+        }
+
+      }
+
+
+
+
+
+
+/*
+
       String clientMsg = null;
       while ((clientMsg = in.readLine()) != null) {
-        /* TODO: det är här vi hanterar alla input från användaren
-        Kontrollera kommando och gör ändringar/skriv ut data beroende på det
-         */
-
-         /* TODO
-         
-          Koppling har skett
-          Få ut ID från CN -> Handler handler  = new Handler(String CN)
-          handler.getPermissions(); //Vad personen får göra.
-          handler.getJournal(); //Returnera journal
-          handler.getJournal(Stirng name/ int id); //Returnera journal
-
-
-
-          //Läsa journal, skriva journal, radera journal, 
-
-
-          Får in unsername
-          Kolla med ACl, Hämtar id och type. Returnerar en 
-          
-         */
 
 
           Console console = System.console();
           String username;
-          username = subject;
+
+          username = clientMsg; 
 		      try {
-				    AclHandler acl = new AclHandler(username);
-            String type = acl.getType(username);
+
+
+            User user;
             
-            if(type.equals("Doctor")) {
-              Doctor doc = (Doctor ) acl.getUser();
-              System.out.println("Would you like to create, edit, or read a medical record?");
+
+            if(clientMsg.toLowerCase().substring(0, 3).equals("doc")) {
+              user = (Doctor ) acl.getUser();
+              //System.out.println("Would you like to create, edit, or read a medical record?");
+
+              String msgToUser = user.userQueries(); 
+              out.println(msgToUser);
+              out.flush();
+
               String str = console.readLine();
               if (str.toLowerCase().equals("create")) {
                 String patientName = console.readLine("Enter name of patient");
-                doc.createJournal(patientName);
+                ((Doctor) user).createJournal(patientName);
               } else if (str.toLowerCase().equals("edit")) {
                 String patientName = console.readLine("Enter name of patient");
                 String msg = console.readLine("Enter message for journal");
-                doc.writeToPatient(patientName);  //lista alternativen läkaren har att skriva till? (writeToPatient-metod)
+                String personal = console.readLine("Enter nurse/doctor");
+
+                //doc.writeToJournal(patientName,msg,);  //lista alternativen läkaren har att skriva till? (writeToPatient-metod)
               } else if (str.toLowerCase().equals("read")) {
-                doc.readJournal(username);
+                user.readJournal(username);
               } else if (str.toLowerCase().equals("delete")) {
                 System.out.println("You do not have the permission to do that.");
               } else {
@@ -125,7 +145,7 @@ public class server implements Runnable {
         out.println(rev);
         out.flush();
         System.out.println("done\n");
-      }
+      }*/
       in.close();
       out.close();
       socket.close();

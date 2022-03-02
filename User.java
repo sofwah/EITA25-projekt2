@@ -23,6 +23,10 @@ public abstract class User {
         this.username = username;
         this.id = id;
     }
+    @Override
+    public String toString() {
+        return username;
+    }
 
     public String userQueries() {
         return "Undefined user, can't find your permissions in system";
