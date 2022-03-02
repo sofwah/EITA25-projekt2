@@ -8,6 +8,7 @@ import client.Client;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+import java.util.Locale;
 
 import database.*;
 
@@ -72,15 +73,40 @@ public class server implements Runnable {
          */
 
         if (firstTime) {
+          System.out.println("received '" + clientMsg + "' from client");
+
+          String shortenedClientMsg = clientMsg.toLowerCase(Locale.ROOT).substring(0,3);
+          if (shortenedClientMsg.equals("doc")) {
+            str = "Would you like to create, edit, or read a medical record?";
+          } else {
+            str = "Not doctor";
+          }
+
+
+          System.out.print("sending '" + str + "' to client...");
+          out.println(str);
+          out.flush();
+          System.out.println("done\n");
+
+          firstTime = false;
+        } else {
+
+          //if kommando == ...
+
+        }
+
+
+
+        /*
+        if (firstTime) {
           username = subject;
-          System.out.println(username);
           System.out.println("First connection");
 
           try {
-            //AclHandler acl = new AclHandler(username);
-            //String type = acl.getType(username);
+            AclHandler acl = new AclHandler(username);
+            String type = acl.getType(username);
 
-            if( username == "Doctor1") {
+            if(type.equals("Doctor") || username == "Doctor1") {
               //Doctor doc = (Doctor ) acl.getUser();
               send("Would you like to create, edit, or read a medical record?", out);
               /*String str = console.readLine();
@@ -95,9 +121,8 @@ public class server implements Runnable {
               } else {
                 System.out.println(" ");
               }*/
-
-            //}
-              /*else if (type.equals("Nurse")) {
+/*
+            } else if (type.equals("Nurse")) {
               //Nurse nur = (Nurse ) acl.getUser();
               send("Would you like to edit, or read a medical record?", out);
 
@@ -112,11 +137,11 @@ public class server implements Runnable {
               } else {
                 System.out.println(" ");
               } */
-
-            /*} else if (type.equals("Government")) {
+/*
+            } else if (type.equals("Government")) {
               //Government gov = (Government ) acl.getUser();
 
-              send("Would you like to read or delete a file?", out);*/
+              send("Would you like to read or delete a file?", out);
             }
           } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -125,18 +150,21 @@ public class server implements Runnable {
 
           firstTime = false;
         }
+        */
 
 
 
 
-        /*
+/*
         String rev = new StringBuilder(clientMsg).reverse().toString();
         System.out.println("received '" + clientMsg + "' from client");
         System.out.print("sending '" + rev + "' to client...");
         out.println(rev);
         out.flush();
         System.out.println("done\n");
-        */
+
+ */
+
 
       }
       in.close();

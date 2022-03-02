@@ -92,7 +92,7 @@ public class Client {
       String msg;
       boolean connection = true;
 
-      System.out.print("sending '" + username + "' to src.server...");
+      System.out.print("sending username '" + username + "' to src.server...");
       send(username,out);
       System.out.println("done");
 
