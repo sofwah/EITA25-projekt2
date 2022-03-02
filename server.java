@@ -107,9 +107,9 @@ public class server implements Runnable {
           out.println(res);
           out.flush();
 
+        } else if(arr[0].equals("q")) {
+          break;
         }
-
-        break;
 
       }
 
