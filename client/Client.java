@@ -90,8 +90,17 @@ public class Client {
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       String msg;
+      boolean connection = true;
 
-      for (;;) {
+      System.out.print("sending '" + username + "' to src.server...");
+      send(username,out);
+      System.out.println("done");
+
+      System.out.println("Receiving response...");
+      String received = receive(in);
+      System.out.println("received '" + received + "' from src.server\n");
+
+      while (connection){
 
        /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren, ex
         1. Inloggning
@@ -100,27 +109,8 @@ public class Client {
         4. Upprepa 2 och 3 tills användaren loggar ut ?
          */
 
+
         /*
-        ex:
-        if (användare == patient) {
-          if (kommando == läsa journal) {
-            skicka till server att användare vill läsa journal
-          } else {
-            be om korrekt kommando
-          }
-
-        } else if (användare == läkare) {
-          if (kommando == läsa journal) {
-            skicka till server att användare vill läsa journal
-          } else if (kommando == skapa journal) {
-            skicka till server att användare vill skapa journal
-          } else if,,, osv
-
-          else {
-            be om korrekt kommando
-          }
-         */
-
         String userID = "";
         //control what kind of user this is, present choices as follows
         switch (username.toLowerCase(Locale.ROOT).substring(0,3)) {
@@ -149,42 +139,59 @@ public class Client {
           /*
             System.out.println("Identification Error. Please login again");
             System.exit(-1);
-          */
+          */ /*
             break;
         }
+
+        */
+
+        /*
         System.out.println("Quit: quit/q"); //If you want to leave application
 
+        System.out.print(">");
+        msg = read.readLine();
 
+
+
+        if (msg.equalsIgnoreCase("quit") || msg.equalsIgnoreCase("q") ) {
+          connection = false;
+          System.out.println("quit 1");
+          break;
+        }
+
+
+         */
 
 
         System.out.print(">");
         msg = read.readLine();
-        
-        boolean connection = true;
+        if (msg.equalsIgnoreCase("quit") || msg.equalsIgnoreCase("q") ) {
+          connection = false;
+          System.out.println("Quitting program.");
+          break;
+        }
+
+
+        System.out.print("sending '" + msg + "' to src.server...");
+        send(msg,out);
+        System.out.println("done");
+
+        //Receive
+
+        System.out.println("Receiving response...");
+        received = receive(in);
+        System.out.println("received '" + received + "' from src.server\n");
+
+        //Send another message or quit
+        /*
+        msg = read.readLine();
         if (msg.equalsIgnoreCase("quit") || msg.equalsIgnoreCase("q") ) {
           connection = false;
           break;
         }
 
-        do {
-
-          System.out.print("sending '" + msg + "' to src.server...");
-          send(msg,out);
-          System.out.println("done");
-
-          //Receive
-
-          System.out.println("Receiving response...");
-          String received = receive(in);
-          System.out.println("received '" + received + "' from src.server\n");
-
-          //Send another message or quit
-          msg = read.readLine();
-          if (msg.equalsIgnoreCase("quit") || msg.equalsIgnoreCase("q") ) {
-            connection = false;
-            break;
-          }
-        } while (connection); //Keep sending and receiving messages to/from server while client not quit.
+         */
+         //Keep sending and receiving messages to/from server while client not quit.
 
         /*
         System.out.print("sending '" + msg + "' to src.server...");
