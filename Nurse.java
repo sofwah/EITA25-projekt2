@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Nurse extends User {
 
-    private int div;
+    private String div;
 
-    public Nurse(String username, int id, int div) {
+    public Nurse(String username, int id, String div) {
         super(username, id);
         this.div = div;
     }
@@ -75,7 +75,7 @@ public class Nurse extends User {
 
             for(String s : permList) {
                 String[] perm = s.trim().split(",", 4); 
-                if(perm[2].equals(""+id) || perm[3].equals(""+div) ) return true;
+                if(perm[2].equals(""+id) || perm[3].equals(div) ) return true;
             }
 
         } catch (Exception e) {

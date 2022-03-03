@@ -4,8 +4,8 @@ import java.io.File;
 public class AclHandler {
 
     private String path = "db/acl.csv";
-    private String username, type;
-    private int id, div;
+    private String username, type, div;
+    private int id;
 
     public AclHandler(String username) throws Exception{
 
@@ -13,12 +13,8 @@ public class AclHandler {
 
         this.username = username;
         this.id = Integer.parseInt(aclList[1]);
-        this.div = Integer.parseInt(aclList[2]);
+        this.div = aclList[2].trim();//Div is now a String.
         this.type = aclList[3];
-
-
-
-
     }
 
     public String getType(String username) throws Exception {

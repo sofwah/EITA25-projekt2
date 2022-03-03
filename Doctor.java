@@ -3,9 +3,9 @@ import java.util.*;
 
 public class Doctor extends User {
 
-    private int div;
+    private String div;
 
-    public Doctor(String username, int id, int div) {
+    public Doctor(String username, int id, String div) {
         super(username, id);
         this.div = div;
     }
@@ -79,7 +79,7 @@ public class Doctor extends User {
 
             for(String s : permList) {
                 String[] perms = s.trim().split(","); 
-                if(perms[1].equals(Integer.toString(id)) || perms[3].equals(""+div)) return true;
+                if(perms[1].equals(Integer.toString(id)) || perms[3].equals(div)) return true;
             }
 
         } catch (Exception e) {
