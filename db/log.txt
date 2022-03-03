@@ -2,3 +2,15 @@ Log: 02/03/2022 16:59:37, By: Government, With id: 6, Operation: Deleted file, P
 ================================================
 Log: 02/03/2022 17:02:28, By: Government, With id: 6, Operation: Deleted file, Patient: Patient1
 ================================================
+Log: 02/03/2022 17:27:33, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient1
+================================================
+Log: 02/03/2022 17:27:33, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 02/03/2022 17:27:33, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 02/03/2022 17:27:33, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient2
+================================================
+Log: 02/03/2022 17:36:30, By: Patient1, With id: 3, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 02/03/2022 17:37:17, By: Government, With id: 6, Operation: Deleted file, Patient: Patient2
+================================================
