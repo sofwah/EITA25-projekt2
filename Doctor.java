@@ -90,6 +90,28 @@ public class Doctor extends User {
 
     }
 
+    //return list of files this patient has permission to read.
+    @Override
+    public File[] filesPermittedToRead(String patient) {
+        File patFile = new File(journalPath+"/"+patient+"-"+div+".csv");
+        if(!patFile.exists()) {
+            return null;
+        }
+        File[] files = new File[1];
+        files[0] = patFile;
+        return files;
+    }
+    @Override
+    public File[] filesPermittedToWrite(String patient) {
+        File patFile = new File(journalPath+"/"+patient+"-"+div+".csv");
+        if(!patFile.exists()) {
+            return null;
+        }
+        File[] files = new File[1];
+        files[0] = patFile;
+        return files;
+    }
+
     @Override
     public String createJournal(String patient) {
 

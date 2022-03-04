@@ -43,5 +43,34 @@ public class Government extends User {
         }
         return "Something went wrong. Couldn't delete file. Check that file exists";
     }
+
+
+    public String deleteFile(String patient) {
+
+        try {
+            File dir = new File(journalPath);
+            File[] fileList = dir.listFiles((path) -> path.toString().contains(patient));
+
+
+            for (File patFile : fileList) {
+                if(patFile.delete()) {
+                    log("Deleted file"+patFile.toString(), patient);
+                }
+            }
+            return "Deleted journal of "+patient;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return "Something went wrong. Couldn't delete file. Check that file exists";
+    }
+
+    //return list of files this patient has permission to read.
+    @Override
+    public File[] filesPermittedToRead(String patient) {
+        File dir = new File(journalPath);
+        File[] fileList = dir.listFiles((path) -> path.toString().contains(patient));
+
+        return fileList;
+    }
     
 }

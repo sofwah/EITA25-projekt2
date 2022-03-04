@@ -90,7 +90,6 @@ public class Client {
       BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-      String msg;
 
 
       System.out.print("Sending username" + username + "to src.server");
@@ -104,88 +103,24 @@ public class Client {
 
       while(true) {
 
+        System.out.print(">");
         String cmd = read.readLine();
+
         send(cmd, out);
+
+        if(cmd.equals("q")) break;
+        
         System.out.println("Done");
-
-        System.out.print("Receive response\n");
        
-        System.out.println("reveived:\n "+receive(in)+"\n from src.server");
+        System.out.println("Reveived:\n "+receive(in)+"\n from src.server");
 
-        break;
       }
 
-      for (;;) {
-
-       /*TODO: Här nedan ska vi ändra så att terminalen tar in lämpliga input av användaren, ex
-        1. Inloggning
-        2. Beroende på användartyp, presentera tillgängliga kommandon
-        3. Skriv ut/genomför önskade ändringar
-        4. Upprepa 2 och 3 tills användaren loggar ut ?
-         */
-
-        /*
-        ex:
-        if (användare == patient) {
-          if (kommando == läsa journal) {
-            skicka till server att användare vill läsa journal
-          } else {
-            be om korrekt kommando
-          }
-
-        } else if (användare == läkare) {
-          if (kommando == läsa journal) {
-            skicka till server att användare vill läsa journal
-          } else if (kommando == skapa journal) {
-            skicka till server att användare vill skapa journal
-          } else if,,, osv
-
-          else {
-            be om korrekt kommando
-          }
-         */
-
-
-
-        //control what kind of user this is, present choices as follows
-       /* switch (username.toLowerCase(Locale.ROOT).substring(0,3)) {
-          case "pat":
-            System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead Medical Record:read");
-            //Send Message
-            //revveive message
-            userID = "pat"; 
-            break;
-          case "nur":
-            System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead: read\nWrite: write");
-            userID = "nur";
-            break;
-
-          case "doc":
-            System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead\nWrite\nCreate");
-            userID = "doc";
-            send("doc", out);
-            receive(in);
-            break;
-
-          case "gov":
-            System.out.println("Welcome " + username + "Choose one of the following optinons:\nRead\nDelete");
-            userID = "gov";
-            break;
-        
-          default:
-          
-            break;
-        } */
+/*      for (;;) {
         System.out.println("Quit: quit/q"); //If you want to leave application
-
-
-
 
         System.out.print(">");
         msg = read.readLine();
-
-
-
         
         boolean connection = true;
         if (msg.equalsIgnoreCase("quit") || msg.equalsIgnoreCase("q") ) {
@@ -213,16 +148,7 @@ public class Client {
           }
         } while (connection); //Keep sending and receiving messages to/from server while client not quit.
 
-        /*
-        System.out.print("sending '" + msg + "' to src.server...");
-        out.println(msg);
-        out.flush();
-        
-        System.out.println("done");
-        System.out.println("received '" + in.readLine() + "' from src.server\n");
-        */
-
-      }
+      } */
       in.close();
       out.close();
       read.close();
