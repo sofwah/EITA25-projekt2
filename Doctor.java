@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.*;
+import java.io.*;
 
 public class Doctor extends User {
 
@@ -130,4 +131,34 @@ public class Doctor extends User {
         return "Something went wrong, couldn't create journal for "+patient;
 
     }
+
+    @Override
+    public boolean rightToCreate(String patient) {
+        return false;
+    }
+
+    public String createFile(String patient, String user, String msg) {
+
+        if(!rightToCreate(patient)) return "Not allowed to create this journal";
+        
+        
+        File patFile = new File(journalPath+patient+"-"+div+".csv");
+        
+        try {
+            if(patFile.createNewFile()) {
+                PrintWriter pw = new PrintWriter(patFile);
+
+                pw.println("Entry: "+formattedTime+";"+username+";"+user+";"+patient+";"+msg);
+                pw.flush();
+                pw.close();
+                return "Created file";
+            }
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return "Something went wrong.";
+    }
+
 }

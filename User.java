@@ -207,6 +207,12 @@ public abstract class User {
 
     }
 
+    public boolean rightToCreate(String patient) {
+        return false;
+    }
+
+
+
     public String createJournal(String patient) {
         return "Operation not allowed.";
     }
@@ -214,5 +220,10 @@ public abstract class User {
     public String deleteJournal(String patient) {
         return "Operation not allowed.";
     } 
+
+
+    public String getUsername() {
+        return this.username;
+    }
     
 }

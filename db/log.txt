@@ -30,3 +30,5 @@ Log: 03/03/2022 18:28:35, By: Doctor1, With id: 1, Operation: Read Journal, Pati
 ================================================
 Log: 03/03/2022 18:39:25, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
 ================================================
+Log: 04/03/2022 13:46:59, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient2
+================================================
