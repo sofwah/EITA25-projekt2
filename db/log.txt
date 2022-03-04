@@ -1,0 +1,198 @@
+Log: 02/03/2022 16:59:37, By: Government, With id: 6, Operation: Deleted file, Patient: Patient2
+================================================
+Log: 02/03/2022 17:02:28, By: Government, With id: 6, Operation: Deleted file, Patient: Patient1
+================================================
+Log: 03/03/2022 13:51:51, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient1
+================================================
+Log: 03/03/2022 14:14:11, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 14:14:11, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 14:14:11, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient2
+================================================
+Log: 03/03/2022 15:01:41, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:01:41, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:05:02, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:11:45, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient2
+================================================
+Log: 03/03/2022 15:13:21, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient3
+================================================
+Log: 03/03/2022 15:17:42, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient7
+================================================
+Log: 03/03/2022 15:17:42, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient7
+================================================
+Log: 03/03/2022 15:20:53, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient8
+================================================
+Log: 03/03/2022 15:20:53, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient8
+================================================
+Log: 03/03/2022 15:20:53, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient8
+================================================
+Log: 03/03/2022 15:20:53, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient8
+================================================
+Log: 03/03/2022 15:33:13, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient8
+================================================
+Log: 03/03/2022 15:33:13, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient8
+================================================
+Log: 03/03/2022 15:33:13, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:39:44, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:39:44, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:39:44, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:39:44, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:51:08, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:51:08, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:51:08, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:51:08, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 15:51:08, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 16:08:45, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient7
+================================================
+Log: 03/03/2022 16:11:47, By: Nurse1, With id: 4, Operation: Read Journal, Patient: Patient3
+================================================
+Log: 03/03/2022 16:14:10, By: Nurse1, With id: 4, Operation: Read Journal, Patient: Patient3
+================================================
+Log: 03/03/2022 16:14:10, By: Nurse1, With id: 4, Operation: Read Journal, Patient: Patient8
+================================================
+Log: 03/03/2022 16:14:33, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient3
+================================================
+Log: 03/03/2022 16:14:33, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient8
+================================================
+Log: 03/03/2022 16:21:39, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient3
+================================================
+Log: 03/03/2022 16:21:39, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient3
+================================================
+Log: 03/03/2022 16:14:33, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient3
+================================================
+Log: 03/03/2022 16:14:33, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient3
+================================================
+Log: 03/03/2022 16:14:33, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient7
+================================================
+Log: 03/03/2022 16:14:33, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient8
+================================================
+Log: 03/03/2022 16:14:33, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient2
+================================================
+Log: 03/03/2022 21:52:29, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 21:52:29, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 21:59:43, By: Patient1, With id: 3, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 10:40:48, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 10:40:48, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 10:42:06, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 10:42:06, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 10:49:04, By: Government, With id: 6, Operation: Deleted file, Patient: Patient1
+================================================
+Log: 04/03/2022 10:49:04, By: Government, With id: 6, Operation: Deleted file, Patient: Patient2
+================================================
+Log: 04/03/2022 10:49:04, By: Government, With id: 6, Operation: Deleted file, Patient: Patient3
+================================================
+Log: 04/03/2022 10:49:04, By: Government, With id: 6, Operation: Deleted file, Patient: Patient7
+================================================
+Log: 04/03/2022 10:49:04, By: Government, With id: 6, Operation: Deleted file, Patient: Patient8
+================================================
+Log: 04/03/2022 10:55:42, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient1
+================================================
+Log: 04/03/2022 10:55:42, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 10:57:18, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient2
+================================================
+Log: 04/03/2022 10:57:18, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient2
+================================================
+Log: 04/03/2022 10:57:18, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 11:04:38, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal1
+================================================
+Log: 04/03/2022 11:04:38, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal1
+================================================
+Log: 04/03/2022 11:04:38, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal1
+================================================
+Log: 04/03/2022 11:04:38, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 11:17:39, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:17:39, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:17:39, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:31:22, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal2
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal3
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal3
+================================================
+Log: 04/03/2022 11:32:54, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal3
+================================================
+Log: 04/03/2022 11:39:19, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal4
+================================================
+Log: 04/03/2022 11:39:19, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal4
+================================================
+Log: 04/03/2022 11:39:19, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal4
+================================================
+Log: 04/03/2022 11:39:19, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Journal4
+================================================
+Log: 04/03/2022 11:49:12, By: Patient1, With id: 3, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 12:45:48, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal6
+================================================
+Log: 04/03/2022 12:49:28, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal7
+================================================
+Log: 04/03/2022 12:51:37, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal7
+================================================
+Log: 04/03/2022 13:00:08, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal8
+================================================
+Log: 04/03/2022 13:00:08, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal7
+================================================
+Log: 04/03/2022 13:00:08, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal8
+================================================
+Log: 04/03/2022 13:03:52, By: Patient1, With id: 3, Operation: Read Journal, Patient: Journal7
+================================================
+Log: 04/03/2022 13:03:52, By: Patient1, With id: 3, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 13:03:43, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal_Patient1_hj„rtproblem
+================================================
+Log: 04/03/2022 13:03:52, By: Patient1, With id: 3, Operation: Read Journal, Patient: Journal_Patient1_hj„rtproblem
+================================================
+Log: 04/03/2022 13:03:43, By: Doctor1, With id: 1, Operation: Created journal, Patient: Journal9
+================================================
+Log: 04/03/2022 13:09:35, By: Nurse2, With id: 8, Operation: Read Journal, Patient: Journal4
+================================================
+Log: 04/03/2022 13:03:43, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal8
+================================================
+Log: 04/03/2022 13:03:43, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal1
+================================================
+Log: 04/03/2022 13:03:43, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 13:20:18, By: Nurse1, With id: 4, Operation: Read Journal, Patient: Journal1
+================================================
+Log: 04/03/2022 13:20:18, By: Nurse1, With id: 4, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 13:34:28, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Journal7
+================================================

@@ -1,0 +1,8 @@
+username,id,div, type
+Doctor1,1,Heart,Doctor
+Doctor2,2,Cancer,Doctor
+Patient1,3,None,Patient
+Patient2,7,None,Patient
+Nurse1,4,Heart,Nurse
+Nurse2,8,Cancer,Nurse
+Government,6,None,Government
