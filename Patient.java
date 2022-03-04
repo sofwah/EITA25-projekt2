@@ -1,4 +1,5 @@
 
+import java.io.*;
 
 public class Patient extends User {
 
@@ -11,6 +12,14 @@ public class Patient extends User {
 
         return patient.equals(username);
 
+    }
+    //return list of files this patient has permission to read.
+    @Override
+    public File[] filesPermittedToRead(String patient) {
+        File dir = new File(journalPath);
+        File[] fileList = dir.listFiles((path) -> path.toString().contains(patient));
+
+        return fileList;
     }
 
     @Override

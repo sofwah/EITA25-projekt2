@@ -14,3 +14,21 @@ Log: 02/03/2022 17:36:30, By: Patient1, With id: 3, Operation: Read Journal, Pat
 ================================================
 Log: 02/03/2022 17:37:17, By: Government, With id: 6, Operation: Deleted file, Patient: Patient2
 ================================================
+Log: 03/03/2022 17:39:12, By: Patient1, With id: 3, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 17:43:22, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 17:43:22, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 18:21:55, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 18:21:55, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 18:23:49, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 18:28:35, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 03/03/2022 18:39:25, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 13:46:59, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient2
+================================================

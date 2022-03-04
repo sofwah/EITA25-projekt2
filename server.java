@@ -68,48 +68,66 @@ public class server implements Runnable {
 
       while(true) {
 
-        String msg = in.readLine();
-        String[] arr = msg.split(" ");
-        if(arr[0].equals("read")) {
-          String patient = arr[1];
-          String journal = user.readJournal(patient);
-          out.println(journal);
-          out.flush();
-        } else if(arr[0].equals("write")) {
+//        String msg = in.readLine();
+        String[] arr;
 
-          try {
+        try {          
+          
+          String msg = receive(in);
+          arr = msg.split(" ");
+
+          if(arr[0].equals("read")) {
+
             String patient = arr[1];
-            String personal = arr[2];
-            String note = arr[3];
-            
-            AclHandler personAcl = new AclHandler(personal);
-            User pers = personAcl.getUser();
+  //          String journal = user.readJournal(patient);
+            String journal = user.readFile(patient);
+            out.println(journal);
+            out.flush();
   
-            String res = user.writeToJournal(patient, note, pers);
+          } else if(arr[0].equals("write")) {
+  
+            try {
+              String patient = arr[1];
+              String personal = arr[2];
+              String note = arr[3];
+              
+              AclHandler personAcl = new AclHandler(personal);
+              User pers = personAcl.getUser();
+    
+              String res = user.writeToJournal(patient, note, pers);
+              out.println(res);
+              out.flush();
+              
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+  
+          } else if (arr[0].equals("create")) {
+            String patient = arr[1];
+  
+            String res = user.createJournal(patient);
             out.println(res);
             out.flush();
-            
-          } catch (Exception e) {
-            e.printStackTrace();
+          } else if (arr[0].equals("delete")) {
+  
+            String patient = arr[1];
+  
+            String res = user.deleteJournal(patient);
+            out.println(res);
+            out.flush();
+  
+          } else if(arr[0].equals("exit")) {
+            break;
           }
+  
 
-        } else if (arr[0].equals("create")) {
-          String patient = arr[1];
+        } catch (Exception e) {
 
-          String res = user.createJournal(patient);
-          out.println(res);
-          out.flush();
-        } else if (arr[0].equals("delete")) {
-
-          String patient = arr[1];
-
-          String res = user.deleteJournal(patient);
-          out.println(res);
-          out.flush();
-
-        } else if(arr[0].equals("q")) {
-          break;
+            out.println("Syntax error, please re-enter command");
+            out.flush();
         }
+
+
 
       }
 
@@ -248,5 +266,15 @@ public class server implements Runnable {
       return ServerSocketFactory.getDefault();
     }
     return null;
+  }
+
+  public static String receive(BufferedReader in) throws IOException {
+    
+    StringBuilder sb = new StringBuilder();
+    do{
+      sb.append(in.readLine());
+    } while(in.ready());
+
+    return sb.toString();
   }
 }
