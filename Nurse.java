@@ -22,6 +22,7 @@ public class Nurse extends User {
         return sb.toString();
     }
 
+    /*
     @Override 
     protected boolean permToWriteToJournal(String patient){
         try {
@@ -83,17 +84,35 @@ public class Nurse extends User {
         }
 
         return false;
-    }
+    } */
 
     //return list of files this patient has permission to read.
     @Override
     public File[] filesPermittedToRead(String patient) {
+        List<File> permittedFiles = new ArrayList<>();
+
         File patFile = new File(journalPath+"/"+patient+"-"+div+".csv");
         if(!patFile.exists()) {
             return null;
+        } 
+        permittedFiles.add(patFile);
+
+
+        File[] existingFiles = new File(journalPath).listFiles((fileName) -> fileName.toString().contains(patient));
+
+        for (File f : existingFiles) {
+
+            if(f.toString().equals(patFile.toString())) {
+
+            }else if(searchEntries(f)) {
+                permittedFiles.add(f);
+            }
         }
-        File[] files = new File[1];
-        files[0] = patFile;
+        File[] files = new File[permittedFiles.size()];
+        for (int i = 0; i< permittedFiles.size(); i++) {
+            files[i] = permittedFiles.get(i);
+        }
+        
         return files;
     }
 
@@ -106,6 +125,71 @@ public class Nurse extends User {
         File[] files = new File[1];
         files[0] = patFile;
         return files;
+    }
+
+
+    private boolean searchEntries(File f) {
+        try {
+            Scanner scan = new Scanner(f);
+
+            while (scan.hasNext()) {
+                String temp = scan.nextLine();
+                if(temp.startsWith("Entry")) {
+                    scan.close();
+                    return temp.contains(username+"-"+id);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return false;
+    }
+    @Override
+    protected String readFile(String patient) {
+        
+        File[] files = filesPermittedToRead(patient);
+        
+        if(files == null || files.length == 0 ) {
+            return "No permission to read any medical records.";
+        }
+        try {
+            StringBuilder sb  = new StringBuilder();
+            Scanner scan;
+            for (File patFile : files) {
+                scan = new Scanner(patFile); 
+                if(patFile.toString().contains(div)) {
+
+                    while(scan.hasNext()) {
+                        sb.append(scan.nextLine());
+                    }
+                    scan.close();
+                } else {
+
+                    while(scan.hasNext()) {
+                        String entry = scan.nextLine();
+                        if(entry.startsWith("Entry:")) {
+                            if(entry.contains(username+"-"+id)) {
+                                sb.append(entry);
+                                while(scan.hasNext() && !entry.startsWith("=")) {
+                                    sb.append(scan.nextLine());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            log("Read Journal", patient);
+
+            return sb.toString();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        return "Error: Something went wrong";
     }
     
 }

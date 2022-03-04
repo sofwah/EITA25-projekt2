@@ -18,7 +18,7 @@ public class Government extends User {
         return sb.toString();
     }
 
-
+/*
     @Override
     protected boolean permToReadJournal(String patient) {
         return true;
@@ -43,8 +43,8 @@ public class Government extends User {
         }
         return "Something went wrong. Couldn't delete file. Check that file exists";
     }
-
-
+*/
+    @Override
     public String deleteFile(String patient) {
 
         try {
@@ -64,6 +64,24 @@ public class Government extends User {
         return "Something went wrong. Couldn't delete file. Check that file exists";
     }
 
+    @Override
+    public String deleteFile(String patient, String div) {
+
+        try {
+
+            File patFile = new File(journalPath+patient+"-"+div);
+
+            if(patFile.delete()) {
+                log("Deleted file"+patFile.toString(), patient);
+            }
+            return "Deleted journal of " + patient + ", div: " +div;
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return "Something went wrong. Couldn't delete file. Check that file exists";
+    }
+
     //return list of files this patient has permission to read.
     @Override
     public File[] filesPermittedToRead(String patient) {
@@ -72,5 +90,6 @@ public class Government extends User {
 
         return fileList;
     }
+
     
 }

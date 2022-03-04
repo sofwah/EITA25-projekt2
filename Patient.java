@@ -7,12 +7,13 @@ public class Patient extends User {
         super(username, id);
     }
 
+    /*
     @Override
     protected boolean permToReadJournal(String patient) {
 
         return patient.equals(username);
 
-    }
+    }*/
     //return list of files this patient has permission to read.
     @Override
     public File[] filesPermittedToRead(String patient) {

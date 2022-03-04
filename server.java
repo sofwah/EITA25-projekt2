@@ -30,6 +30,16 @@ public class server implements Runnable {
       String subject = ((X509Certificate) cert[0]).getSubjectX500Principal().getName();
       String issuer = ((X509Certificate) cert[0]).getIssuerX500Principal().getName();
       String serialNmbr = ((X509Certificate) cert[0]).getSerialNumber().toString();
+
+      String[] cipherArr = socket.getEnabledCipherSuites();
+      for (String s : cipherArr) {
+        //System.out.println(s);
+      }
+
+      String[] suites = {"TLS_DHE_RSA_WITH_AES_256_CBC_SHA256"};
+      System.out.println(suites[0]);
+      socket.setEnabledCipherSuites(suites);
+
       numConnectedClients++;
       System.out.println("client connected");
       System.out.println("client name (cert subject DN field): " + subject);
@@ -77,10 +87,12 @@ public class server implements Runnable {
           arr = msg.split(" ");
 
           if(arr[0].equals("read")) {
-
+            System.out.println("read");
             String patient = arr[1];
+            System.out.println("hämtar patient");
   //          String journal = user.readJournal(patient);
             String journal = user.readFile(patient);
+            System.out.println("ska ha läst journal");
             out.println(journal);
             out.flush();
   
@@ -89,12 +101,19 @@ public class server implements Runnable {
             try {
               String patient = arr[1];
               String personal = arr[2];
-              String note = arr[3];
+
+              StringBuilder sb = new StringBuilder();
+              String message = "";
+              for(int i = 3; i < arr.length; i++) {
+                sb.append(arr[i]+" ");
+              }
+
+             message = sb.toString();
               
               AclHandler personAcl = new AclHandler(personal);
               User pers = personAcl.getUser();
     
-              String res = user.writeToJournal(patient, note, pers);
+              String res = user.writeToFile(patient, message, pers);
               out.println(res);
               out.flush();
               
@@ -104,15 +123,30 @@ public class server implements Runnable {
   
           } else if (arr[0].equals("create")) {
             String patient = arr[1];
-  
-            String res = user.createJournal(patient);
+            String personal = arr[2];
+            StringBuilder sb = new StringBuilder();
+            String message = "";
+            for(int i = 3; i < arr.length; i++) {
+              sb.append(arr[i]+" ");
+            }
+
+            message = sb.toString();
+
+            //String res = user.createJournal(patient);
+            String res = user.createFile(patient,personal, message);
             out.println(res);
             out.flush();
           } else if (arr[0].equals("delete")) {
   
             String patient = arr[1];
-  
-            String res = user.deleteJournal(patient);
+
+            String res ="";
+            if(arr.length > 2) {
+              String fileDiv = arr[2];
+              res = user.deleteFile(patient, fileDiv);
+            } else {
+              res = user.deleteFile(patient);
+            }
             out.println(res);
             out.flush();
   
@@ -122,7 +156,7 @@ public class server implements Runnable {
   
 
         } catch (Exception e) {
-
+            e.printStackTrace();
             out.println("Syntax error, please re-enter command");
             out.flush();
         }

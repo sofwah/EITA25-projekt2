@@ -32,3 +32,61 @@ Log: 03/03/2022 18:39:25, By: Doctor1, With id: 1, Operation: Read Journal, Pati
 ================================================
 Log: 04/03/2022 13:46:59, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient2
 ================================================
+Log: 04/03/2022 14:15:57, By: Doctor1, With id: 1, Operation: Created journal, Patient: Patient1
+================================================
+Log: 04/03/2022 14:36:56, By: Doctor2, With id: 2, Operation: Created new journal, Patient: Patient1
+================================================
+Log: 04/03/2022 14:36:56, By: Doctor2, With id: 2, Operation: Created new journal, Patient: Patient2
+================================================
+Log: 04/03/2022 14:36:56, By: Doctor2, With id: 2, Operation: Wrote to Journal, Patient: Patient2
+================================================
+Log: 04/03/2022 16:27:58, By: Doctor1, With id: 1, Operation: Created new journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:27:58, By: Doctor1, With id: 1, Operation: Created new journal, Patient: Doctor1
+================================================
+Log: 04/03/2022 16:27:58, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:33:45, By: Doctor1, With id: 1, Operation: Created new journal, Patient: Patient2
+================================================
+Log: 04/03/2022 16:38:32, By: Patient1, With id: 3, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:43:11, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:43:11, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient2
+================================================
+Log: 04/03/2022 16:43:32, By: Doctor2, With id: 2, Operation: Created new journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:43:32, By: Doctor2, With id: 2, Operation: Created new journal, Patient: Patient2
+================================================
+Log: 04/03/2022 16:43:32, By: Doctor2, With id: 2, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:43:32, By: Doctor2, With id: 2, Operation: Read Journal, Patient: Patient2
+================================================
+Log: 04/03/2022 16:48:14, By: Doctor2, With id: 2, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:48:14, By: Doctor2, With id: 2, Operation: Read Journal, Patient: Patient2
+================================================
+Log: 04/03/2022 16:48:31, By: Nurse1, With id: 4, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:50:01, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:52:43, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:52:43, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:54:02, By: Doctor1, With id: 1, Operation: Wrote to Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:54:02, By: Doctor1, With id: 1, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:54:40, By: Nurse2, With id: 5, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:56:27, By: Government, With id: 6, Operation: Read Journal, Patient: Patient1
+================================================
+Log: 04/03/2022 16:56:27, By: Government, With id: 6, Operation: Deleted filedb/Journals/Patient1-Cancer.csv, Patient: Patient1-Cancer
+================================================
+Log: 04/03/2022 16:56:27, By: Government, With id: 6, Operation: Deleted filedb/Journals/Patient1-Heart.csv, Patient: Patient1
+================================================
+Log: 04/03/2022 16:56:27, By: Government, With id: 6, Operation: Deleted filedb/Journals/Patient2-Heart.csv, Patient: Patient2
+================================================
+Log: 04/03/2022 16:56:27, By: Government, With id: 6, Operation: Deleted filedb/Journals/Patient2-Cancer.csv, Patient: Patient2
+================================================

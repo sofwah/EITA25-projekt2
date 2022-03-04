@@ -32,6 +32,7 @@ public abstract class User {
         return "Undefined user, can't find your permissions in system";
     }
 
+    /*
     protected boolean permToWriteToJournal(String patient) {
         return false;
     }
@@ -39,16 +40,19 @@ public abstract class User {
     protected boolean permToReadJournal(String patient) {
         return false;
     }
-
+*/
     public File[] filesPermittedToRead(String patient) {
-        return new File(journalPath).listFiles();
+        //return new File(journalPath).listFiles();
+        return null;
     }
 
     
     public File[] filesPermittedToWrite(String patient) {
-        return new File(journalPath).listFiles();
+        //return new File(journalPath).listFiles();
+        return null;
     }
 
+    /*
     protected String readJournal(String patient) {
         
         if(!permToReadJournal(patient)) {
@@ -75,7 +79,7 @@ public abstract class User {
 
         return "Error: Something went wrong";
     }
-
+*/
     protected String readFile(String patient) {
         
         File[] files = filesPermittedToRead(patient);
@@ -87,6 +91,7 @@ public abstract class User {
             StringBuilder sb  = new StringBuilder();
             Scanner scan;
             for (File patFile : files) {
+
                 scan = new Scanner(patFile);    
 
                 while(scan.hasNext()) {
@@ -104,6 +109,7 @@ public abstract class User {
 
         return "Error: Something went wrong";
     }
+    /*
 
     protected String writeToJournal(String patient, String msg, User personal ) {
         
@@ -138,7 +144,7 @@ public abstract class User {
         
         return "Something went wrong, could not write to file.";
     }
-
+*/
     protected String writeToFile(String patient, String msg, User personal ) {
         
         File[] files = filesPermittedToWrite(patient);
@@ -149,18 +155,23 @@ public abstract class User {
         try {
             StringBuilder sb = new StringBuilder();
             String res = "";
+
+            AclHandler acl = new AclHandler(patient);
+            User patientUser = acl.getUser();
+
             for (File patFile  : files ) {
 
                 FileWriter printWriter = new FileWriter(patFile, true);    
     
                 int patientId = getId(patient);
                 if(personal instanceof Doctor) {
-                    sb.append("Entry: "+formattedTime+","+personal.getId()+","+id+","+patientId); //Doc nuerse div patient
+                    sb.append("\nEntry: "+formattedTime+";"+personal.getUsername()+"-"+personal.getId()+";"+username+"-"+id+";"+patient+"-"+patientId); //Doc nuerse div patient
                 } else if (personal instanceof Nurse) {
-                    sb.append("Entry: "+formattedTime+","+id+","+personal.getId()+","+patientId); //Doc nuerse div patient
+                    sb.append("\nEntry: "+formattedTime+";"+this.username+"-"+this.id+";"+personal.getUsername()+"-"+personal.getId()+";"+patient+"-"+patientId); //Doc nuerse div patient
                 }
     
-                sb.append(","+msg);
+                sb.append(";"+msg);
+                sb.append("\n================================================\n");
                 res = sb.toString();
                 printWriter.write(res);
                 printWriter.flush();  
@@ -207,17 +218,24 @@ public abstract class User {
 
     }
 
-    public boolean rightToCreate(String patient) {
-        return false;
+
+
+    public String createFile(String patient, String user, String msg) {
+
+        return "Not allowed to create..";
     }
 
 
-
+/*
     public String createJournal(String patient) {
         return "Operation not allowed.";
     }
+*/
+    public String deleteFile(String patient) {
+        return "Operation not allowed.";
+    } 
 
-    public String deleteJournal(String patient) {
+    public String deleteFile(String patient, String div) {
         return "Operation not allowed.";
     } 
 
